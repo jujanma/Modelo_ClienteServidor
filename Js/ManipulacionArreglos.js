@@ -57,3 +57,32 @@ let estudianteFiltrado = estudiante.filter((est) => {
 });
 console.log(estudiante);
 console.log(estudianteFiltrado);
+
+//! REDUCE
+// reduce todo el array a un solo valor, es inmutable
+
+let calificaciones = [3, 5, 9, 10, 10];
+// en el acumulador se va a ir haciendo la suma de las calificaciones, valorActual es cada item de la calificación es cada elemento del array
+let suma = calificaciones.reduce(
+  (acumulador, valorActual) => acumulador + valorActual,
+  0
+);
+console.log(calificaciones);
+console.log(suma);
+
+let promedio = suma / calificaciones.length;
+console.log(promedio);
+
+let edades = [21, 21, 23, 43, 21, 43, 18, 18, 23, 23];
+
+let resultado = edades.reduce((acum, edad) => {
+  if (!acum[edad]) {
+    acum[edad] = 1;
+  } else {
+    acum[edad]++;
+  }
+  return acum;
+}, {});
+
+console.log(edades);
+console.log(resultado);
