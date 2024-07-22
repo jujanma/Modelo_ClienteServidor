@@ -16,6 +16,22 @@ app.get("/", (req, res) => {
   }
 });
 
+app.get("/:id", (req, res) => {
+  try {
+    let {
+      params: { id },
+    } = req;
+    let user = Service.getUser(id);
+    console.log(id);
+    res.json({
+      message: `Usuario ${id}`,
+      body: user,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.post("/", (req, res) => {
   try {
     let { body: newUser } = req;
@@ -26,6 +42,22 @@ app.post("/", (req, res) => {
     });
   } catch (error) {
     console.error("error en post", error);
+  }
+});
+
+app.put("/:id", (req, res) => {
+  try {
+    let {
+      params: { id },
+    } = req;
+    let { body: userUpdate } = req;
+    let user = Service.updateUser(id, userUpdate);
+    res.json({
+      message: `Usuario ${id}`,
+      body: user,
+    });
+  } catch (error) {
+    console.error(error);
   }
 });
 
